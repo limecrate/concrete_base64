@@ -79,7 +79,7 @@ toBase64.addEventListener('click', function () {
 
 			show(download);
 		} catch (err) {
-			console.log(err);
+			console.error(err);
 			showMessage('Failed encoding..\nFile size might be too large.');
 		} finally {
 			processingModal.close();
@@ -116,7 +116,8 @@ toBinary.addEventListener('click', function () {
 			download.download = fileName;
 
 			show(download);
-		} catch {
+		} catch (err) {
+			console.error(err);
 			showMessage(
 				'Failed decoding..\n' 
 				+ (!isToBinUrl 
