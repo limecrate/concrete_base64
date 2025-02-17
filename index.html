@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Base64</title>
+		<link rel="icon" href="/icons/B64.svg" />
+		<script type="module" crossorigin src="/assets/index-BG8eDyQe.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-h-hACdoS.css">
+	</head>
+	<body>
+		<main>
+			<div class="sect row" style="align-items: end">
+				<div id="input-box">
+					<label class="btn push lit-btn h-btn all-r" for="file-input"> Upload </label>
+					<input id="file-input" type="file" class="hide" />
+				</div>
+				<div class="column">
+					<div id="file-names"></div>
+					<div id="file-size"></div>
+					<span id="file-number"></span>
+				</div>
+			</div>
+
+			<div class="sect row" style="justify-content: space-between">
+				<div class="column">
+					<button id="to-b64" class="btn push lit-btn h-btn t-r">To Base64</button>
+					<div class="row">
+						<button
+							id="to-b64-url-safe"
+							style="width: 50%"
+							class="btn push lit-btn l-btn bl-r"
+						>
+							url safe
+						</button>
+						<button
+							id="to-b64-omit-padding"
+							style="width: 50%"
+							class="btn push lit-btn l-btn br-r"
+						>
+							omit '='
+						</button>
+					</div>
+				</div>
+
+				<div class="column">
+					<button id="to-bin" class="btn push lit-btn h-btn t-r">To Binary</button>
+					<button id="to-bin-url-safe" class="btn push lit-btn l-btn b-r">
+						url safe
+					</button>
+				</div>
+			</div>
+
+			<div style="text-align: center">
+				<div id="message" class="hide">error message</div>
+			</div>
+
+			<div class="sect row">
+				<a id="download" class="btn push lit-btn h-btn all-r hide">
+					Download <span></span>
+				</a>
+			</div>
+		</main>
+
+		<dialog id="processing-modal" class="all-r">
+			<img src="/icons/B64.svg" alt="+/" height="48px" />
+			<span></span>
+		</dialog>
+	</body>
+</html>
