@@ -3,6 +3,7 @@
 	--btn-color: #d9d9d9;
 	--btn-shadow-color: #c5c5c5;
 	--dark-text-color: #494949;
+	--error-color: #8f302b;
 	--btn-radius: 15px;
 	--small-radius: 3px;
 	
@@ -121,7 +122,7 @@ main {
 }
 
 #message {
-	color: rgb(143, 48, 43); 
+	color: var(--error-color); 
 	white-space: pre;
 }
 
@@ -278,5 +279,17 @@ main {
 
 	#download > span {
 		margin-left: 2vw;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: #808080;
+		--btn-color: #d9d9d9;
+		--btn-shadow-color: #c5c5c5;
+		--dark-text-color: #494949;
+		--error-color: #8f302b;
+		--btn-radius: 15px;
+		--small-radius: 3px;
 	}
 }
