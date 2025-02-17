@@ -31,7 +31,7 @@ const fileSize = document.querySelector('#file-size');
 /** @type {HTMLSpanElement} */
 const downloadFileName = document.querySelector('#download > span');
 
-/** @type {HTMLDialogElement} */
+/** @type {HTMLDivElement} */
 const message = document.querySelector('#message');
 
 /** @type {HTMLDialogElement} */
