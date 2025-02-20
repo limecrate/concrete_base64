@@ -48,7 +48,9 @@ switchButton(toBinaryUrlSafe, isToBinUrl);
 /// 파일이 변경되었을 때
 fileInput.addEventListener('change', function (_e) {
 	fileNames.textContent = fileInput.files[0]?.name.normalize('NFC') ?? ''; // macOS NFC 정규화
-	fileSize.textContent = `(${toByteSize(fileInput.files[0]?.size)})`;
+
+	const fileSize = toByteSize(fileInput.files[0]?.size);
+	fileSize.textContent = fileSize ? `(${toByteSize(fileInput.files[0]?.size)})` : '';
 
 	hide(message);
 	hide(download);

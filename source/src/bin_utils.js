@@ -92,7 +92,7 @@ export function extensionOf(bin) {
  * @returns {string}
  */
 export function toByteSize(size) {
-	if (size === null) return '';
+	if (!size) return '';
 
 	if (size < kib) return `${size} B`;
 	else if (size < mib) return `${size % kib ? (size / kib).toFixed(1) : size / kib} KiB`;
