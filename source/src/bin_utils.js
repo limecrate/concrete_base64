@@ -19,6 +19,7 @@ const fileSignatures = [
 	{ ext: '7z', sig: [0x37, 0x7a, 0xbc, 0xaf, 0x27, 0x1c] },
 	{ ext: 'gz', sig: [0x1f, 0x8b] },
 	{ ext: 'xz', sig: [0xfd, 0x37, 0x7a, 0x58, 0x5a, 0x00] },
+	// { ext: 'tar', sig: [] },
 	// font
 	{ ext: 'ttf', sig: [0x74, 0x72, 0x75, 0x65, 0x00] },
 	{ ext: 'otf', sig: [0x4f, 0x54, 0x54, 0x4f, 0x00] },
@@ -32,17 +33,39 @@ const fileSignatures = [
 	{ ext: 'webm', sig: [0x1a, 0x45, 0xdf, 0xa3] },
 	// UNSTABLE
 	{ ext: 'doc', sig: [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1] }, // DOC, DOT, PPS, PPT, XLA, XLS, WIZ
-	/* 4B offset */ 
-	{
-		ext: 'heif',
-		sig: [null, null, null, null, 0x00, 0x00, 0x00, 0x18, 0x66, 0x74, 0x79, 0x70, 0x68, 0x65, 0x69, 0x63],
-	},
+	/* 4B offset */
 	{ ext: 'mp4', sig: [null, null, null, null, 0x66, 0x74, 0x79, 0x70, 0x69, 0x73, 0x6f, 0x6d] },
 	{ ext: 'mov', sig: [null, null, null, null, 0x66, 0x74, 0x79, 0x70, 0x71, 0x74, 0x20, 0x20] },
 	{ ext: 'mov', sig: [null, null, null, null, 0x6d, 0x6f, 0x6f, 0x76] },
 	{ ext: 'avif', sig: [null, null, null, null, 0x66, 0x74, 0x79, 0x70, 0x61, 0x76, 0x69, 0x66] },
-	// { ext: 'tar', sig: [] },
+	{
+		ext: 'heif',
+		sig: [
+			null,
+			null,
+			null,
+			null,
+			0x00,
+			0x00,
+			0x00,
+			0x18,
+			0x66,
+			0x74,
+			0x79,
+			0x70,
+			0x68,
+			0x65,
+			0x69,
+			0x63,
+		],
+	},
 ];
+
+const kib = 0x400; // 0x400 1024
+const mib = 0x100000; // 0x100000 1048576
+const gib = 0x40000000; // 0x40000000 1073741824
+const tib = 0x10000000000; // 0x10000000000 1099511627776
+const pib = 0x4000000000000; // 0x4000000000000 1125899906842624
 
 /**
  * @param {Uint8Array} bin
@@ -63,35 +86,20 @@ export function extensionOf(bin) {
 	return 'txt';
 }
 
-
 /**
  * 들어온 값을 MiB, GiB 등의 형식으로 변환
  * @param {number | null} size
- * @param {boolean} addBorder
  * @returns {string}
  */
-export function toByteSize(size, addBorder = true) {
-	if (!size) return '';
+export function toByteSize(size) {
+	if (size === null) return '';
 
-	/** @type {string} */
-	let res;
-
-	if (size < 0x400) { // 0x400 1024
-		res = `${size} B`;
-	} else if (size < 0x100000) { // 0x100000 1048576
-		res = `${size % 0x400 ? (size / 0x400).toFixed(1) : size / 0x400} KiB`;
-	} else if (size < 0x40000000) { // 0x40000000 1073741824
-		res = `${size % 0x100000 ? (size / 0x100000).toFixed(1) : size / 0x100000} MiB`;
-	} else if (size < 0x10000000000) { // 0x10000000000 1099511627776
-		res = `${size % 0x40000000 ? (size / 0x40000000).toFixed(1) : size / 0x40000000} GiB`;
-	} else if (size < 0x4000000000000) { // 0x4000000000000 1125899906842624
-		res = `${size % 0x10000000000 ? (size / 0x10000000000).toFixed(1) : size / 0x10000000000} TiB`;
-	} else {
-		res = `${size % 0x4000000000000 ? (size / 0x4000000000000).toFixed(1) : size / 0x4000000000000} PiB`;
-	}
-
-	if (addBorder) return `(${res})`;
-	else return res;
+	if (size < kib) return `${size} B`;
+	else if (size < mib) return `${size % kib ? (size / kib).toFixed(1) : size / kib} KiB`;
+	else if (size < gib) return `${size % mib ? (size / mib).toFixed(1) : size / mib} MiB`;
+	else if (size < tib) return `${size % gib ? (size / gib).toFixed(1) : size / gib} GiB`;
+	else if (size < pib) return `${size % tib ? (size / tib).toFixed(1) : size / tib} TiB`;
+	else return `${size % pib ? (size / pib).toFixed(1) : size / pib} PiB`;
 }
 
 /**

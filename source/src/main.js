@@ -29,7 +29,7 @@ const fileNames = document.querySelector('#file-names');
 const fileSize = document.querySelector('#file-size');
 
 /** @type {HTMLSpanElement} */
-const downloadFileName = document.querySelector('#download > span');
+const downloadFileSize = document.querySelector('#download > span');
 
 /** @type {HTMLDivElement} */
 const message = document.querySelector('#message');
@@ -48,7 +48,7 @@ switchButton(toBinaryUrlSafe, isToBinUrl);
 /// 파일이 변경되었을 때
 fileInput.addEventListener('change', function (_e) {
 	fileNames.textContent = fileInput.files[0]?.name.normalize('NFC') ?? ''; // macOS NFC 정규화
-	fileSize.textContent = `${toByteSize(fileInput.files[0]?.size)}`;
+	fileSize.textContent = `(${toByteSize(fileInput.files[0]?.size)})`;
 
 	hide(message);
 	hide(download);
@@ -57,7 +57,7 @@ fileInput.addEventListener('change', function (_e) {
 /// base64로 인코딩하려고 할 때
 toBase64.addEventListener('click', function () {
 	if (!fileInput.files.length) {
-		showMessage('No file');
+		showMessage('Upload file to encode');
 		return;
 	}
 
@@ -73,7 +73,7 @@ toBase64.addEventListener('click', function () {
 			const url = URL.createObjectURL(blob);
 			const fileName = makeFileName(fileInput.files[0].name, 'txt');
 
-			downloadFileName.textContent = toByteSize(blob.size, false);
+			downloadFileSize.textContent = toByteSize(blob.size);
 			download.href = url;
 			download.download = fileName;
 
@@ -92,7 +92,7 @@ toBase64.addEventListener('click', function () {
 /// binary로 디코딩하려고 할 때
 toBinary.addEventListener('click', function () {
 	if (!fileInput.files.length) {
-		showMessage('No file');
+		showMessage('Upload file to decode');
 		return;
 	}
 
@@ -110,7 +110,7 @@ toBinary.addEventListener('click', function () {
 			const url = URL.createObjectURL(blob);
 			const fileName = makeFileName(fileInput.files[0].name, extensionOf(bin));
 
-			downloadFileName.textContent = toByteSize(blob.size, false);
+			downloadFileSize.textContent = toByteSize(blob.size);
 			download.href = url;
 			download.download = fileName;
 
@@ -118,10 +118,10 @@ toBinary.addEventListener('click', function () {
 		} catch (err) {
 			console.error(err);
 			showMessage(
-				'Failed decoding..\n' 
-				+ (!isToBinUrl 
-					? 'Try to use URL safe option.' 
-					: 'This file might be invalid or too large.')
+				'Failed decoding..\n' +
+					(!isToBinUrl
+						? 'Try to use URL safe option.'
+						: 'This file might be invalid or too large.')
 			);
 		} finally {
 			processingModal.close();
