@@ -26,7 +26,7 @@ const toBinaryUrlSafe = document.querySelector('#to-bin-url-safe');
 const fileNames = document.querySelector('#file-names');
 
 /** @type {HTMLDivElement} */
-const fileSize = document.querySelector('#file-size');
+const inputFileSize = document.querySelector('#file-size');
 
 /** @type {HTMLSpanElement} */
 const downloadFileSize = document.querySelector('#download > span');
@@ -50,7 +50,7 @@ fileInput.addEventListener('change', function (_e) {
 	fileNames.textContent = fileInput.files[0]?.name.normalize('NFC') ?? ''; // macOS NFC 정규화
 
 	const fileSize = toByteSize(fileInput.files[0]?.size);
-	fileSize.textContent = fileSize ? `(${toByteSize(fileInput.files[0]?.size)})` : '';
+	inputFileSize.textContent = fileSize ? `(${fileSize})` : '';
 
 	hide(message);
 	hide(download);
