@@ -1,4 +1,4 @@
-# b64_site
+# Concrete Base64
 
 ## Minimal Online Base64 Encoder and Decoder!
 
