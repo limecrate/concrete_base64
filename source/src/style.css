@@ -1,6 +1,6 @@
 :root {
-	--bg-color: #808080;
-	--btn-color: #d9d9d9;
+	--bg-color: #777777;
+	--btn-color: #d5d5d5;
 	--btn-shadow-color: #c5c5c5;
 	--dark-text-color: #494949;
 	--btn-radius: 15px;
@@ -11,8 +11,6 @@
 	font-family: 'Trebuchet MS', 'Arial', sans-serif;
 	font-size: 20px;
 	color: var(--dark-text-color);
-	/* margin: 0;
-	padding: 0; */
 }
 
 h1 {
