@@ -4,4 +4,4 @@
 
 Visit https://b64.lict.me/
 
-to enjoy this project
+Enjoy this project
