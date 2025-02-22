@@ -10,7 +10,7 @@ Enjoy this project
 
 Concrete Base64 Site is using builtin functions to encode and decode.
 
-If you use FireFox or Safari, this program can process larger file and will do so faster.
+If you use Firefox or Safari, it will help this program process fast and handle a large file.
 
 The reason is the existence of the `Uint8Array.prototype.toBase64` and `Uint8Array.fromBase64` functions.
 
