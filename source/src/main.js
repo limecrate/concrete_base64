@@ -121,9 +121,7 @@ toBinary.addEventListener('click', function () {
 			console.error(err);
 			showMessage(
 				'Failed decoding..\n' +
-					(!isToBinUrl
-						? 'Try to use URL safe option.'
-						: 'This file might be invalid or too large.')
+					(!isToBinUrl ? 'Try to use URL safe option.' : 'This file might be invalid or too large.')
 			);
 		} finally {
 			processingModal.close();
