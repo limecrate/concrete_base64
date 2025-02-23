@@ -2,7 +2,7 @@
 
 ## Minimal Online Base64 Encoder and Decoder!
 
-Visit https://b64.lict.me/
+Visit https://B64.Lict.me/
 
 Enjoy this project
 
