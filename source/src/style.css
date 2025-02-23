@@ -124,6 +124,11 @@ main {
 	font-size: 16px;
 }
 
+#to-b64-url-safe,
+#to-b64-omit-padding {
+	width: 50%;
+}
+
 #message {
 	white-space: pre;
 }
@@ -171,21 +176,21 @@ main {
 
 /********* RADIUS ***********/
 
-.all-r {
+.r-all {
 	border-radius: var(--btn-radius);
 }
 
-.t-r {
+.r-t {
 	border-top-left-radius: var(--btn-radius);
 	border-top-right-radius: var(--btn-radius);
 }
 
-.b-r {
+.r-b {
 	border-bottom-left-radius: var(--btn-radius);
 	border-bottom-right-radius: var(--btn-radius);
 }
 
-.l-r {
+.r-l {
 	border-top-left-radius: var(--btn-radius);
 	border-bottom-left-radius: var(--btn-radius);
 }
@@ -195,11 +200,11 @@ main {
 	border-bottom-right-radius: var(--btn-radius);
 }
 
-.br-r {
+.r-br {
 	border-bottom-right-radius: var(--btn-radius);
 }
 
-.bl-r {
+.r-bl {
 	border-bottom-left-radius: var(--btn-radius);
 }
 
@@ -286,13 +291,3 @@ main {
 		margin-left: 2vw;
 	}
 }
-
-/* 
-@media (prefers-color-scheme: dark) {
-	:root {
-		--bg-color: #7d7d7d;
-		--btn-color: #d2d2d2;
-		--btn-shadow-color: #c0c0c0;
-		--dark-text-color: #424242;
-	}
-} */
