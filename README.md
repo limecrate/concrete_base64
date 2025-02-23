@@ -16,6 +16,6 @@ The reason is the existence of the `Uint8Array.prototype.toBase64` and `Uint8Arr
 
 Chromium or old browsers do not currently support these functions (I think Chromium will support these soon).
 
-(for more informations about these functions, https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64)
+(for more informations about these functions, visit https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array/toBase64)
 
 If these functions are not available, this program will use the `btoa` and `atob` functions instead.
