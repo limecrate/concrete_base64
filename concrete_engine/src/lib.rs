@@ -11,8 +11,8 @@ pub extern "C" fn add(a: i32, b: i32) -> i32 {
     a + b
 }
 
-#[cfg(not(test))]
+#[cfg(target_arch = "wasm32")]
 #[panic_handler]
 pub fn panic(_info: &::core::panic::PanicInfo) -> ! {
-    loop {}
+    core::arch::wasm32::unreachable()
 }
