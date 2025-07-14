@@ -71,11 +71,6 @@ pub extern "C" fn to_base64(dptr: *const u8, dlen: usize, rbuf: *mut u8, padding
     j
 }
 
-// #[unsafe(export_name = "fromBase64")]
-// pub fn from_base64(base64: &str, data: &mut [u8]) -> i32 {
-//     0
-// }
-
 #[inline]
 unsafe fn map_b64(code: u8) -> u8 {
     unsafe { *BASE64_TABLE.get_unchecked(code as usize) }
